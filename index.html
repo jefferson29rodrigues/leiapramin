@@ -8,14 +8,13 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="">Coloque qualquer texto na caixa que eu leio pra vc</div>
-            <div contenteditable oninput="setText(event)" class="texto"></div> 
-            <div class="buttons">
-                <button onclick="speak()" class="btn-ler">Ler</button>
-                <button onclick="stop()" class="btn-pausar">Pausar</button>
-            </div>
-        </header>
+        <h1>Leia Pra Min</h1>
+        <h2>Coloque qualquer texto na caixa que eu leio pra você!</h2>
+        <div contenteditable oninput="setText(event)" class="texto"></div> 
+        <div class="buttons">
+            <button onclick="speak()" class="btn-ler">Ler</button>
+            <button onclick="stop()" class="btn-pausar">Pausar</button>
+        </div>
     </div>
     <script src="javascript.js"></script>
 </body>

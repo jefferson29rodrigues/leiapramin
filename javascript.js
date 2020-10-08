@@ -1,7 +1,7 @@
 const utterance = new SpeechSynthesisUtterance();
 
-utterance.lang = "en-US";
-utterance.rate = 1;
+utterance.lang = "pt-BR";
+utterance.rate = 0.75;
 
 
 
