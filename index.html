@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,30 @@
 </head>
 <body>
     <div class="container">
+
         <h1>Leia Pra Min</h1>
         <h2>Coloque qualquer texto na caixa que eu leio pra você!</h2>
+        
+        <div class="customize">
+            <div class="idioma">
+                <button class="mudar-portugues" onclick="mudarParaPortugues()">Português</button>
+                <button class="mudar-ingles" onclick="mudarParaIngles()">Inglês</button>
+            </div>
+            <div class="reproducao">
+                <h3>Reprodução</h3>
+                <button class="aumentar" onclick="velo05()">0.5x</button>
+                <button class="aumentar" onclick="velo1()">1x</button>
+                <button class="aumentar" onclick="velo15()">1.5x</button>
+                <button class="aumentar" onclick="velo2()">2x</button>
+            </div>
+        </div>
+
         <div contenteditable oninput="setText(event)" class="texto"></div> 
         <div class="buttons">
             <button onclick="speak()" class="btn-ler">Ler</button>
             <button onclick="stop()" class="btn-pausar">Pausar</button>
         </div>
+        
     </div>
     <script src="javascript.js"></script>
 </body>
