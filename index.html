@@ -7,32 +7,70 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-
-        <h1>Leia Pra Min</h1>
-        <h2>Coloque qualquer texto na caixa que eu leio pra você!</h2>
-        
-        <div class="customize">
-            <div class="idioma">
-                <button class="mudar-portugues" onclick="mudarParaPortugues()">Português</button>
-                <button class="mudar-ingles" onclick="mudarParaIngles()">Inglês</button>
+    <div class="full-space">
+        <div class="container">
+            <h1>Leia Pra Min</h1>
+            <h2>Coloque qualquer texto na caixa que eu leio pra você!</h2>
+            
+            <div class="customize">
+                <div class="idioma">
+                    <button class="mudar-portugues" onclick="mudarParaPortugues()">Português</button>
+                    <button class="mudar-ingles" onclick="mudarParaIngles()">Inglês</button>
+                </div>
+                <div class="reproducao">
+                    <h3>Reprodução</h3>
+                    <button class="aumentar" onclick="velo05()">0.5x</button>
+                    <button class="aumentar" onclick="velo1()">1x</button>
+                    <button class="aumentar" onclick="velo15()">1.5x</button>
+                    <button class="aumentar" onclick="velo2()">2x</button>
+                </div>
             </div>
-            <div class="reproducao">
-                <h3>Reprodução</h3>
-                <button class="aumentar" onclick="velo05()">0.5x</button>
-                <button class="aumentar" onclick="velo1()">1x</button>
-                <button class="aumentar" onclick="velo15()">1.5x</button>
-                <button class="aumentar" onclick="velo2()">2x</button>
+            <div contenteditable oninput="setText(event)" class="texto"></div> 
+
+            <div class="buttons">
+                <button onclick="speak()" class="btn-ler">Ler</button>
+                <button onclick="stop()" class="btn-pausar">Pausar</button>
             </div>
         </div>
 
-        <div contenteditable oninput="setText(event)" class="texto"></div> 
-        <div class="buttons">
-            <button onclick="speak()" class="btn-ler">Ler</button>
-            <button onclick="stop()" class="btn-pausar">Pausar</button>
+        <div class="speak-chat">
+            <div id="chat"></div>
+            <div class="btns-speak">
+                <button class="btn-falar" id="startButton">Iniciar Reconhecimento de Voz</button>
+                <button class="btn-pararFala" id="stopButton">Parar Reconhecimento de Voz</button>
+            </div>
         </div>
-        
     </div>
+
+    
+
+    <script>
+        const chatDiv = document.getElementById('chat');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const recognition = new webkitSpeechRecognition();
+
+        recognition.lang = 'pt-BR'; // Define o idioma, ajuste conforme necessário.
+
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            const p = document.createElement('p');
+            p.textContent = transcript;
+            chatDiv.appendChild(p);
+        };
+
+        startButton.addEventListener('click', function() {
+            recognition.start();
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        });
+
+        stopButton.addEventListener('click', function() {
+            recognition.stop();
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        });
+    </script>
     <script src="javascript.js"></script>
 </body>
 </html>
